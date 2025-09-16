@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="p-3">
+    <h1>Please leave a statement about your experience!</h1>
+    <form method="POST" action="{% url 'statements.create_statement' %}">
+        {% csrf_token %}
+        <p>
+            <label for="name">Name:</label>
+            <input name="name" class="form-control" id="name" placeholder="Anonymous">
+        </p>
+        <p>
+            <label for="thoughts">Thoughts:</label>
+            <textarea name="thoughts" required class="form-control" id="thoughts"></textarea>
+        </p>
+        <div class="text-center">
+            <button type="submit" class="btn bg-dark text-white">
+                Submit Thoughts
+            </button>
+            <a type="submit" class="btn bg-dark text-white" href="{% url 'cart.purchase' %}"
+                style="background-color: red !important;">
+                Cancel - Do Not Submit Thoughts
+            </a>
+        </div>
+    </form>
+</div>
+{% endblock content %}

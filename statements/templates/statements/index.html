@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="p-3">
+    <h1>Statements list</h1>
+    <ul class="list-group">
+        {% for statement in template_data.statements %}
+        <li class="list-group-item pb-3 pt-3">
+            <h5 class="card-title">
+                Statement by {{ statement.name }}
+            </h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+                {{ statement.date }}
+            </h6>
+            <p class="card-text">{{ statement.thoughts }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock content %}
