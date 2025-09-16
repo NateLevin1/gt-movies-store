@@ -1,0 +1,47 @@
+.bg-index {
+    background: url("/static/img/background.jpg") no-repeat fixed;
+    background-size: 100% auto;
+}
+.navbar a.nav-link {
+    color: #fffef6 !important;
+}
+.bg-dark {
+    background-color: #003057 !important;
+}
+.ms-footer {
+    background-color: #a4925a;
+    color: #000000;
+}
+.ms-footer p {
+    font-size: 13px;
+}
+.ms-footer a:hover {
+    color: #6ab43e;
+    text-decoration: none;
+}
+.ms-footer-bottom span {
+    font-size: 13px;
+    line-height: 38px;
+}
+.ms-footer-bottom a {
+    color: #6ab43e;
+    text-decoration: none;
+}
+.ms-footer-bottom a:hover {
+    color: #fff;
+}
+.img-card-200 {
+    width: unset;
+    max-width: 100%;
+    max-height: 200px;
+}
+.img-card-400 {
+    width: unset;
+    max-width: 100%;
+    max-height: 400px;
+}
+body,
+html {
+    min-height: 100vh;
+    min-height: 100svh;
+}
