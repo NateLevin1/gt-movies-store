@@ -10,6 +10,15 @@ def index(request):
     petitions = Petition.objects.all()
     template_data['petitions'] = petitions
 
+    if request.method == 'POST' and request.POST['vote-id'] != '':
+        vote_id = request.POST['vote-id']
+        petition = Petition.objects.get(id=vote_id)
+        if not petition.liked_by.contains(request.user):
+            petition.liked_by.add(request.user)
+            template_data['message'] = f'Voted for {petition.desired_movie}!'
+        else:
+            template_data['message'] = f'You have already voted for {petition.desired_movie}!'
+
     return render(request, 'petitions/index.html', {'template_data': template_data })
 
 @login_required

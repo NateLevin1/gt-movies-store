@@ -6,15 +6,24 @@
             <div class="col mx-auto mb-3">
                 <h1>Petitions</h1>
                 <a href="{% url 'petitions.create_petition' %}" class="btn bg-dark text-white">Create a Petition</a>
-                <div style="margin-top: 2rem; display: flex; gap: 2rem; flex-wrap: wrap;">
+                <div style="margin-top: 2rem;"></div>
+                {% if template_data.message %}
+                <div class="alert alert-primary" role="alert">
+                    {{ template_data.message }}
+                </div>
+                {% endif %}
+                <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
                     {% for petition in template_data.petitions %}
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title">{{ petition.desired_movie }}</h5>
                             <p class="card-text">Requested by {{ petition.user.username }}</p>
                             <p class="card-text">"Yes" Count: {{ petition.liked_by.count }}</p>
-                            <!-- TODO: implement -->
-                            <!-- <a href="#" class="btn btn-primary">Vote Affirmatively</a> -->
+                            <form method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="vote-id" value="{{ petition.id }}">
+                                <button type="submit" class="btn btn-primary">Vote Affirmatively</button>
+                            </form>
                         </div>
                     </div>
                     {% endfor %}
