@@ -1,4 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Petitions</h1>
+<div class="p-3">
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col mx-auto mb-3">
+                <h1>Petitions</h1>
+                <a href="{% url 'petitions.create_petition' %}" class="btn bg-dark text-white">Create a Petition</a>
+                <div style="margin-top: 2rem; display: flex; gap: 2rem; flex-wrap: wrap;">
+                    {% for petition in template_data.petitions %}
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ petition.desired_movie }}</h5>
+                            <p class="card-text">Requested by {{ petition.user.username }}</p>
+                            <p class="card-text">"Yes" Count: {{ petition.liked_by.count }}</p>
+                            <!-- TODO: implement -->
+                            <!-- <a href="#" class="btn btn-primary">Vote Affirmatively</a> -->
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}
